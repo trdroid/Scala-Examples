@@ -55,22 +55,24 @@ scala> languages(1) = "Elixir"
 scala> languages(2) = "F#"
 
 scala> languages
-res3: Array[String] = Array(Clojure, Elixir, F#)
-```
+res7: Array[String] = Array(Clojure, Elixir, F#)
 
-*Accessing*
-
-```scala
 scala> languages(0)
-res4: String = Clojure
+res8: String = Clojure
 
 scala> languages(1)
-res5: String = Elixir
+res9: String = Elixir
 
 scala> languages(2)
-res6: String = F#
+res10: String = F#
 
 scala> languages(3)
 java.lang.ArrayIndexOutOfBoundsException: 3
   ... 32 elided
+
+scala> languages(0)
+res12: String = Clojure
 ```
+
+Notice how every statement in REPL is taking up a 'res' variable implying that every statement in Scala is an expression. Notice the jump from res2 to res7 and res10 to res12.
+
