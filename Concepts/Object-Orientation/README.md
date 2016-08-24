@@ -63,3 +63,43 @@ Failed: No javap tool available: scala.tools.nsc.interpreter.JavapClass$JavapToo
 
 On Ubuntu
 
+```scala
+$ scala
+Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_65).
+Type in expressions for evaluation. Or try :help.
+
+scala> class Person
+defined class Person
+
+scala> :javap
+:javap [-lcsvp] [path1 path2 ...]
+
+scala> :javap -c
+usage       :javap [opts] [path or class or -]...
+-help       Prints this help message
+-raw        Don't unmangle REPL names
+-app        Show the DelayedInit body of Apps
+-fun        Show anonfuns for class or Class#method
+-verbose/-v Stack size, number of locals, method args
+-private/-p Private classes and members
+-package    Package-private classes and members
+-protected  Protected classes and members
+-public     Public classes and members
+-l          Line and local variable tables
+-c          Disassembled code
+-s          Internal type signatures
+-sysinfo    System info of class
+-constants  Static final constants
+
+scala> :javap -c Person
+Compiled from "<console>"
+public class Person {
+  public Person();
+    Code:
+       0: aload_0
+       1: invokespecial #9                  // Method java/lang/Object."<init>":()V
+       4: return
+}
+
+scala> 
+```
