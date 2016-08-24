@@ -5,12 +5,15 @@
 A class is a blueprint for the objects that can be instantiated from it. 
 A class definition consists of field declarations and method definitions.
 
-The fields are used to store the state of an object.
+The fields are used to store the state of an object and are defined either with the keywords *val* or *var*
 
 Method definitions
 
 * provide access to the fields of an object
+* perform computations on/using an object's state
 * alter the state of an object
+
+Methods are defined with the keyword *def*
 
 An object is a concrete instantiation of the class that it belongs to.
 
@@ -103,3 +106,16 @@ public class Person {
 
 scala> 
 ```
+
+**Creating objects**
+
+Objects of a class can be created with the *new* keyword followed by the name of the class.
+
+```scala
+scala> new Person
+res0: Person = Person@7d286fb6
+
+scala> new Person()
+res1: Person = Person@51133c06
+```
+
