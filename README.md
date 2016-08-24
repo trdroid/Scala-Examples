@@ -2,6 +2,10 @@
 
 http://www.scala-lang.org/download/
 
+### SBT Download
+
+http://www.scala-sbt.org/download.html
+
 Scala programs can be composed and executed in the following ways:
 
 1. Interactively at an REPL prompt
