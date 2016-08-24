@@ -36,3 +36,39 @@ the constructor parameter list.
 
 This can be verified by decompiling the class 
 
+```scala
+scala> :javap -c Person
+Compiled from "<console>"
+public class Person {
+  public java.lang.String name();
+    Code:
+       0: aload_0
+       1: getfield      #11                 // Field name:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String address();
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field address:Ljava/lang/String;
+       4: areturn
+
+  public void address_$eq(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #15                 // Field address:Ljava/lang/String;
+       5: return
+
+  public Person(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #11                 // Field name:Ljava/lang/String;
+       5: aload_0
+       6: aload_2
+       7: putfield      #15                 // Field address:Ljava/lang/String;
+      10: aload_0
+      11: invokespecial #23                 // Method java/lang/Object."<init>":()V
+      14: return
+}
+```
