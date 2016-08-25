@@ -70,5 +70,34 @@ public class Person {
 }
 ```
 
-It can be noticed that the "Person" class has a constructor that takes two String arguments, name and address; it has a getter "name()" that returns "name", a String; a getter and setter for "address"
+It can be noticed that the "Person" class has the following generated methods
+
+* a constructor that takes two String arguments, name and address; 
+* a getter (an accessor) called "name()" that returns "name", a String; 
+* a getter (an accessor) called "address()" and a setter (a mutator) called "address_$eq" for "address"
+
+```scala
+scala> val person = new Person("Jai", "London, U.K.");
+person: Person = Person@7c75222b
+
+scala> person.name
+res0: String = Jai
+
+scala> person.name = "John"
+<console>:13: error: reassignment to val
+       person.name = "John"
+                   ^
+
+scala> person.address
+res1: String = London, U.K.
+
+scala> person.address = "Tokyo, Japan"
+person.address: String = Tokyo, Japan
+
+scala> person.address_$eq("Milan, Italy")
+
+scala> person.address
+res4: String = Milan, Italy
+```
+
 
