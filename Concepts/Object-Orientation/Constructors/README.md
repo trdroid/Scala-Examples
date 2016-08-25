@@ -94,6 +94,9 @@ res1: String = London, U.K.
 scala> person.address = "Tokyo, Japan"
 person.address: String = Tokyo, Japan
 
+scala> person.address
+res3: String = Tokyo, Japan
+
 scala> person.address_$eq("Milan, Italy")
 
 scala> person.address
