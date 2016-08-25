@@ -19,7 +19,7 @@ defined class Vehicle
 
 ### Generating accessor methods
 
-The accessor methods that are generated for fields depend on how they are declared in the constructor's parameter list. 
+The accessor and mutator methods that are generated for fields depend on how they are declared in the constructor's parameter list. 
 
 **Generating 
 
@@ -28,11 +28,10 @@ scala> class Person(val name: String, var address: String)
 defined class Person
 ```
 
-For the class "Person" defined above, the following accessor methods are generated depending on how the member fields are declared in 
-the constructor parameter list.
+For the class "Person" defined above, the following accessor, mutator methods are generated depending on how the member fields are declared in the constructor parameter list.
 
-* a getter method for "name", as it is declared with *val*, which implies a *read-only* (an immutable) member field
-* both getter and setter methods for "address", as it is declared with *var*, which implies a *read & write* (a mutable) member field
+* a getter (an accessor) method for "name", as it is declared with *val*, which implies a *read-only* (an immutable) member field
+* both getter (an accessor) and setter (a mutator) methods for "address", as it is declared with *var*, which implies a *read & write* (a mutable) member field
 
 This can be verified by decompiling the class 
 
@@ -72,3 +71,6 @@ public class Person {
       14: return
 }
 ```
+
+It can be noticed that the "Person" class has a constructor that takes two String arguments, name and address; it has a getter "name()" that returns "name", a String; a getter and setter for "address"
+
