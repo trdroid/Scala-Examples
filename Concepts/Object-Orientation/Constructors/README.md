@@ -21,8 +21,6 @@ defined class Vehicle
 
 The accessor and mutator methods that are generated for fields depend on how they are declared in the constructor's parameter list. 
 
-**Generating 
-
 ```scala
 scala> class Person(val name: String, var address: String)
 defined class Person
