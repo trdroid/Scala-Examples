@@ -17,7 +17,114 @@ scala> class Vehicle
 defined class Vehicle
 ```
 
-### Generating accessor methods
+### Declaring parameters
+
+The parameters(fields) in the constructor can be declared using the following keywords
+
+* var
+* val
+* private var
+* private val
+* or no keyword at all (none of the above).
+
+Constructors are differentiated based on how the parameters are declared.
+
+**Parameters declared as val**
+
+**Parameters declared as var**
+
+**Parameters declared as private val or private var**
+
+When a parameter is declared in the constructor with *private val* or *private var*, its getter(accessor) and setter(mutator) methods are not generated.
+It can ONLY be accessed from within the class.
+
+```scala
+```
+
+**Parameters declared without var or val**
+
+When a parameter is declared in the constructor without *var* or *val*, its getter(accessor) and setter(mutator) methods are not generated. It CANNOT be accessed even from with in the class. 
+
+```scala
+```
+
+**Named parameters**
+
+The parameter names can be used when instantiating an object.
+
+```scala
+scala> class Person(val name: String)
+defined class Person
+
+scala> val person = new Person
+<console>:12: error: not enough arguments for constructor Person: (name: String)Person.
+Unspecified value parameter name.
+       val person = new Person
+                    ^
+
+scala> val person = new Person(name="Jai")
+person: Person = Person@b2c5e07
+
+scala> person
+res0: Person = Person@b2c5e07
+```
+
+```scala
+scala> class Person(val name: String) {
+     |  override def toString = s"Name:$name"
+     | }
+defined class Person
+
+scala> val person1 = new Person
+<console>:12: error: not enough arguments for constructor Person: (name: String)Person.
+Unspecified value parameter name.
+       val person1 = new Person
+                     ^
+
+scala> val person = new Person(name="Jai")
+person: Person = Name:Jai
+
+scala> person
+res0: Person = Name:Jai
+```
+
+The names of the parameters in the declaration and the instantiation should match.
+
+```scala
+scala> class Person(val name: String)
+defined class Person
+
+scala> val person = new Person(n="Jai")
+<console>:12: error: not found: value n
+       val person = new Person(n="Jai")
+```
+
+Named parameters can be used only for the preferred parameters
+
+```scala
+scala> class Person(val name: String, val address: String)
+defined class Person
+
+scala> val person = new Person(name="Jai", "Tokyo, Japan")
+person: Person = Person@135606db
+
+scala> val person1 = new Person("Keith", address="Colombo, Srilanka")
+person1: Person = Person@27d5a580
+
+scala> val person2 = new Person(name="John", address="Auckland, New Zealand")
+person2: Person = Person@7d898981
+```
+
+**Default values for parameters**
+
+The constructor parameters can be provided with default values.
+
+```scala
+
+```
+
+
+### Examples... Generated accessor, mutator methods
 
 The accessor and mutator methods that are generated for fields depend on how they are declared in the constructor's parameter list. 
 
@@ -95,7 +202,7 @@ scala> person.address = "Tokyo, Japan"
 person.address: String = Tokyo, Japan
 
 scala> person.address
-res3: String = Tokyo, Japan
+res2: String = Tokyo, Japan
 
 scala> person.address_$eq("Milan, Italy")
 
@@ -103,4 +210,39 @@ scala> person.address
 res4: String = Milan, Italy
 ```
 
+Note that the *val* declaration ONLY prevents a setter from being generated, however its value can be set when instantiating an object.
+
+### Defining more than one constructor
+
+One or more auxiliary constructors for a class can be defined for a class which allows different ways of creating instances for that class. 
+
+Auxiliary constructors
+
+* are defined by creating methods named *this* with non-conflicting signatures.
+* Each auxiliary constructor MUST begin by calling a previously defined constructor.
+
+```scala
+scala> class Person(val name: String, var address: String) {
+     |  def this(name: String) {
+     |   this(name, "Earth")
+     |  }
+     |
+     |  def this() {
+     |   this("Jai")
+     |   this.address = "Colombo, Srilanka"
+     |  }
+     |
+     |  override def toString = s"Name: $name Address: $address"
+     | }
+defined class Person
+
+scala> val person1 = new Person
+person1: Person = Name: Jai Address: Colombo, Srilanka
+
+scala> val person2 = new Person("Keith")
+person2: Person = Name: Keith Address: Earth
+
+scala> val person3 = new Person("John", "Seoul, Korea")
+person3: Person = Name: John Address: Seoul, Korea
+```
 
