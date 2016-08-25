@@ -99,7 +99,7 @@ scala> val person = new Person(n="Jai")
        val person = new Person(n="Jai")
 ```
 
-Named parameters can be used only for the preferred parameters
+Named parameters can be used only for the preferred parameters.
 
 ```scala
 scala> class Person(val name: String, val address: String)
@@ -120,9 +120,34 @@ person2: Person = Person@7d898981
 The constructor parameters can be provided with default values.
 
 ```scala
+scala> class Person(val name: String = "Homosapien", val address: String = "Earth") {
+     |  override def toString = s"Name:$name, Address:$address"
+     | }
+defined class Person
 
+scala> val person = new Person
+person: Person = Name:Homosapien, Address:Earth
+
+scala> val person1 = new Person("Jai")
+person1: Person = Name:Jai, Address:Earth
+
+scala> val person2 = new Person("Jai", "Tokyo, Japan")
+person2: Person = Name:Jai, Address:Tokyo, Japan
+
+scala> val person3 = new Person(name = "Jai")
+person3: Person = Name:Jai, Address:Earth
+
+scala> val person4 = new Person(address = "Mars")
+person4: Person = Name:Homosapien, Address:Mars
+
+scala> val person5 = new Person(address = "Colombo, Srilanka", name = "Jai")
+person5: Person = Name:Jai, Address:Colombo, Srilanka
+
+scala> val person6 = new Person(name = "Jai", address = "Melbourne, Australia")
+person6: Person = Name:Jai, Address:Melbourne, Australia
 ```
 
+Note that with named parameters, parameters need not be passed in the order they are declared in the constructor when instantiating an object.
 
 ### Examples... Generated accessor, mutator methods
 
