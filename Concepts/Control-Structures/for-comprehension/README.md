@@ -83,5 +83,8 @@ scala> for(language <- languages
      |  if language.contains("Clojure") && !language.endsWith("ala")
      | ) println(language)
 Clojure
+
+scala> :t res3
+Unit
 ```
 
