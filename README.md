@@ -6,6 +6,10 @@ http://www.scala-lang.org/download/
 
 http://www.scala-sbt.org/download.html
 
+### Atom Editor Scala Support
+
+https://github.com/ensime/ensime-atom
+
 Scala programs can be composed and executed in the following ways:
 
 1. Interactively at an REPL prompt
