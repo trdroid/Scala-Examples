@@ -27,6 +27,10 @@ It would fail on the following input: true
 Is NOT a student
 ```
 
+Notice how a warning is printed as the compiler infers that "isStudent" is a boolean type and that it can take two possible values, only one of which is included in the *match*. 
+
+"isStudent" is initialized to *false* because of which the statement "Is NOT a student" is printed, but "isStudent" could also have been *true*, which is not "checked for" in the *match*, which is why the compiler provides the warning message. 
+
 ```scala
 scala> val isStudent = false
 isStudent: Boolean = false
@@ -42,6 +46,12 @@ scala.MatchError: false (of class java.lang.Boolean)
   ... 34 elided
 ```
 
+Notice how the compiler throws a *MatchError* message as the *match* DOES NOT have a case clause that matches the value of "isStudent".
+
+**Key Point**
+
+In Scala, *match*es should be exhaustive i.e. the value of an entity SHOULD *match* any of the cases provided within the *match*.
+Any attempt to *match* on a value for which there is no matching *case* clause results in a *MatchError*.
 
 ### Matching Any types
 
