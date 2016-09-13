@@ -53,6 +53,40 @@ Notice how the compiler throws a *MatchError* message as the *match* DOES NOT ha
 In Scala, *match*es should be exhaustive i.e. the value of an entity SHOULD *match* any of the cases provided within the *match*.
 Any attempt to *match* on a value for which there is no matching *case* clause results in a *MatchError*.
 
+### Matching inside a loop
+
+```scala
+scala> val toggles = Seq(0, 1, 1, 0)
+toggles: Seq[Int] = List(0, 1, 1, 0)
+
+scala> for(toggle <- toggles) {
+     |  toggle match {
+     |   case 0 => println("It is 0")
+     |   case 1 => println("It is 1")
+     |  }
+     | }
+It is 0
+It is 1
+It is 1
+It is 0
+```
+
+```scala
+scala> val booleans = Seq(false, true, false, true)
+booleans: Seq[Boolean] = List(false, true, false, true)
+
+scala> for(boolean <- booleans) {
+     |  boolean match {
+     |   case false => println("false")
+     |   case true => println("true")
+     |  }
+     | }
+false
+true
+false
+true
+```
+
 ### Matching Any types
 
 ```scala
