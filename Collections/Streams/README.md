@@ -23,20 +23,42 @@ A *Stream* is a recursive data structure like lists that consists of
 
 Example:
 
+
+
 The function "doubleNum" returns a *Stream of Int*s which is defined using *Stream.cons* method by passing it 
 
 * its parameter "num", and
 * a recursive call to itself by passing in "num + 1"
 
 ```scala
-scala> def doubleNum(num: Int): Stream[Int] = Stream.cons(num, doubleNum(num + 1))
+scala> def doubleNum(num: Int): Stream[Int] = Stream.cons(num, doubleNum(num * 2))
 doubleNum: (num: Int)Stream[Int]
 
 scala> val numStream = doubleNum(1)
 numStream: Stream[Int] = Stream(1, ?)
 
 scala> numStream
-res5: Stream[Int] = Stream(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ?)
+res0: Stream[Int] = Stream(1, ?)
+
+scala> val numbers = numStream.take(10)
+numbers: scala.collection.immutable.Stream[Int] = Stream(1, ?)
+
+scala> val numbersList = numbers.toList
+numbersList: List[Int] = List(1, 2, 4, 8, 16, 32, 64, 128, 256, 512)
+
+scala> val numbersList1 = numStream.take(10).toList
+numbersList1: List[Int] = List(1, 2, 4, 8, 16, 32, 64, 128, 256, 512)
+```
+
+```scala
+scala> def incrementNum(num: Int): Stream[Int] = Stream.cons(num, incrementNum(num + 1))
+incrementNum: (num: Int)Stream[Int]
+
+scala> val numStream = incrementNum(1)
+numStream: Stream[Int] = Stream(1, ?)
+
+scala> numStream
+res0: Stream[Int] = Stream(1, ?)
 
 scala> val numbers = numStream.take(10)
 numbers: scala.collection.immutable.Stream[Int] = Stream(1, ?)
@@ -46,7 +68,6 @@ numbersList: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 scala> val numbersList1 = numStream.take(10).toList
 numbersList1: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-
 ```
 
 ### Termination
