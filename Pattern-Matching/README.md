@@ -1,5 +1,91 @@
-### Basics
+# Pattern Matching 
 
+### match clause
+
+```scala
+scala> val isStudent = false
+isStudent: Boolean = false
+
+scala> isStudent match {
+     |  case true => println("Is a student")
+     |  case false => println("Is NOT a student")
+     | }
+Is NOT a student
+```
+
+```scala
+scala> val isStudent = false
+isStudent: Boolean = false
+
+scala> isStudent match {
+     |  case false => println("Is NOT a student")
+     | }
+<console>:13: warning: match may not be exhaustive.
+It would fail on the following input: true
+       isStudent match {
+       ^
+Is NOT a student
+```
+
+Notice how a warning is printed as the compiler infers that "isStudent" is a boolean type and that it can take two possible values, only one of which is included in the *match*. 
+
+"isStudent" is initialized to *false* because of which the statement "Is NOT a student" is printed, but "isStudent" could also have been *true*, which is not "checked for" in the *match*, which is why the compiler provides the warning message. 
+
+```scala
+scala> val isStudent = false
+isStudent: Boolean = false
+
+scala> isStudent match {
+     |  case true => println("Is a student")
+     | }
+<console>:13: warning: match may not be exhaustive.
+It would fail on the following input: false
+       isStudent match {
+       ^
+scala.MatchError: false (of class java.lang.Boolean)
+  ... 34 elided
+```
+
+Notice how the compiler throws a *MatchError* message as the *match* DOES NOT have a case clause that matches the value of "isStudent".
+
+**Key Point**
+
+In Scala, *match*es should be exhaustive i.e. the value of an entity SHOULD *match* any of the cases provided within the *match*.
+Any attempt to *match* on a value for which there is no matching *case* clause results in a *MatchError*.
+
+### Matching inside a loop
+
+```scala
+scala> val toggles = Seq(0, 1, 1, 0)
+toggles: Seq[Int] = List(0, 1, 1, 0)
+
+scala> for(toggle <- toggles) {
+     |  toggle match {
+     |   case 0 => println("It is 0")
+     |   case 1 => println("It is 1")
+     |  }
+     | }
+It is 0
+It is 1
+It is 1
+It is 0
+```
+
+```scala
+scala> val booleans = Seq(false, true, false, true)
+booleans: Seq[Boolean] = List(false, true, false, true)
+
+scala> for(boolean <- booleans) {
+     |  boolean match {
+     |   case false => println("false")
+     |   case true => println("true")
+     |  }
+     | }
+false
+true
+false
+true
+```
 
 ### Matching Any types
 

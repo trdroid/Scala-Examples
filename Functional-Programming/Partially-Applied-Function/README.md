@@ -31,7 +31,7 @@ scala> var partialMultiplier = multiplier(_:Int, 2)
 partialMultiplier: Int => Int = <function1>
 ```
 
-The output "partialMultiplier: Int => Int = <function1>" implies that the partial function "partialMultiplier" implements the *Function1* trait i.e. it accepts only one argument.
+The output "partialMultiplier: Int => Int = \<function1\>" implies that the partial function "partialMultiplier" implements the *Function1* trait i.e. it accepts only one argument.
 
 The partial function "partialMultiplier" can be called with the remaining arguments.
 
