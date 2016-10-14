@@ -1,6 +1,10 @@
 # Futures
 
-A *Future* is a handle to an asynchronous result. A *Future* allows processing the result of a function without waiting for the result in the current thread. It is a placeholder for a function result which will be available at some point in the future. 
+A *Future* is a handle to an asynchronous result of a function. Once a function completes it contains the result of the function.
+
+**Asynchronosity**
+
+A *Future* allows processing the result of a function without waiting for the result in the current thread. It is a placeholder for a function result which will be available at some point in the future. 
 
 **Read-only**
 
@@ -8,7 +12,11 @@ A *Future* is a read-only placeholder for a future function result. A *Future* c
 
 **Composability**
 
-*Futures* are composable with other *Futures* which allow combining functions asynchronously.
+*Futures* are composable with other *Futures* which allow combining functions asynchronously. )
+
+### Block Diagram
+
+![](_misc/Future%20Block%20diagram.png)
 
 ### History
 
