@@ -130,7 +130,7 @@ Hello World!
 
 ### Accessing Members of a Trait
 
-An instance of "MyClass" can invoke the method mixed in from "MyTrait".
+An instance of a class can invoke the methods mixed in from a *trait*.
 
 ```scala
 scala> trait MyTrait {
