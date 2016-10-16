@@ -37,6 +37,13 @@ A *trait* can be *mixed in* to a class using the *extends* keyword, in which cas
 Example
 
 ```scala
+scala> trait MyTrait {
+     |  def greet() = {
+     |   println("Hello World!")
+     |  }
+     | }
+defined trait MyTrait
+
 scala> class MyClass extends MyTrait {
      |  override def toString = "Hello, I am MyClass!"
      | }
@@ -88,34 +95,9 @@ scala> class Q extends P with MyTrait with AnotherTrait
 defined class Q
 ```
 
-
-### Accessing Members of a Trait
-
-An instance of "MyClass" can invoke the method mixed in from "MyTrait".
-
-```scala
-scala> trait MyTrait {
-     |  def greet() = {
-     |   println("Hello World!")
-     |  }
-     | }
-defined trait MyTrait
-
-scala> class MyClass extends MyTrait {
-     |  override def toString = "Hello, I am MyClass!"
-     | }
-defined class MyClass
-
-scala> val myInstance = new MyClass
-myInstance: MyClass = Hello, I am MyClass!
-
-scala> myInstance.greet()
-Hello World!
-```
-
 ### *Trait* as a Type
 
-A variable declared to be of type "MyTrait" can reference an instance of any class that *mixes* the *trait*.
+A variable declared to be of a *Trait* type can reference an instance of any class that *mixes* the *trait*.
 
 ```scala
 scala> trait MyTrait {
@@ -146,4 +128,43 @@ scala> myTraitRef1.greet()
 Hello World!
 ```
 
+### Accessing Members of a Trait
 
+An instance of "MyClass" can invoke the method mixed in from "MyTrait".
+
+```scala
+scala> trait MyTrait {
+     |  def greet() = {
+     |   println("Hello World!")
+     |  }
+     | }
+defined trait MyTrait
+
+scala> class MyClass extends MyTrait {
+     |  override def toString = "Hello, I am MyClass!"
+     | }
+defined class MyClass
+
+scala> val myInstance = new MyClass
+myInstance: MyClass = Hello, I am MyClass!
+
+scala> myInstance.greet()
+Hello World!
+```
+
+### Overriding Members of a Trait
+
+```scala
+scala> trait MyTrait {
+     |  def greet() = {
+     |   println("Hello World!")
+     |  }
+     | }
+defined trait MyTrait
+
+scala> val myTraitRef2: MyTrait = new MyKlass
+myTraitRef2: MyTrait = Hello, I am MyKlass!
+
+scala> myTraitRef2.greet()
+In overridden greet method - Hello, I am MyKlass! Bye.     
+```
