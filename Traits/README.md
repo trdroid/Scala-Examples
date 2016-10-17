@@ -162,9 +162,54 @@ scala> trait MyTrait {
      | }
 defined trait MyTrait
 
+scala> class MyKlass extends MyTrait {
+     |  override def toString = "Hello, I am MyKlass!"
+     |  override def greet() = {
+     |   println("In overridden greet method - " + toString + " Bye.")
+     |  }
+     | }
+defined class MyKlass
+
 scala> val myTraitRef2: MyTrait = new MyKlass
 myTraitRef2: MyTrait = Hello, I am MyKlass!
 
 scala> myTraitRef2.greet()
 In overridden greet method - Hello, I am MyKlass! Bye.     
 ```
+
+### Usage Scenarios
+
+*Traits* are most commonly used to
+
+* enrich thin interfaces
+* provide stackable modifications to classes
+
+### Enrinching thin interfaces
+
+As the members of a *trait* can be mixed in, *traits* can be used to "enrich" a *thin interface* to a *rich interface*.
+
+**Thin vs Rich Interfaces**
+
+A trade-off faced in object-oriented design by API implementers and its users are thin vs rich interfaces. 
+
+*Thin interface*
+
+A thin interface has relatively few number of methods to implement which makes it easy for the API implementers to implement, 
+but the user of such an interface would have to write more code or use other APIs to fulfill other functionality.
+
+*Rich interface*
+
+A rich interface has relatively more number of methods to implement which makes it hard for the API implementers to implement, 
+but would benefit the user of such an interface as the required functionality can be picked and readily used. 
+
+
+
+
+
+
+
+
+
+
+
+
